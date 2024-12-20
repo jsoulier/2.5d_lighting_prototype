@@ -563,8 +563,8 @@ static bool create_textures()
     {
         .format = SDL_GPU_TEXTUREFORMAT_D32_FLOAT,
         .usage = SDL_GPU_TEXTUREUSAGE_DEPTH_STENCIL_TARGET | SDL_GPU_TEXTUREUSAGE_SAMPLER,
-        .width = RENDERER_SUN_RESOLUTION_X,
-        .height = RENDERER_SUN_RESOLUTION_Y,
+        .width = RENDERER_SUN_WIDTH,
+        .height = RENDERER_SUN_HEIGHT,
     };
     info[TEXTURE_LIGHT] = (SDL_GPUTextureCreateInfo)
     {
@@ -829,7 +829,7 @@ success:
     SDL_SubmitGPUCommandBuffer(commands);
 }
 
-void renderer_get_position(
+void renderer_pick(
     float* x,
     float* y,
     float* z)
@@ -854,7 +854,7 @@ void renderer_get_position(
         SDL_Log("Failed to acquire command buffer: %s", SDL_GetError());
         return;
     }
-    SDL_PushGPUDebugGroup(commands, "get_position");
+    SDL_PushGPUDebugGroup(commands, "pick");
     SDL_GPUStorageBufferReadWriteBinding sbb = {0};
     sbb.buffer = sampler_sbo;
     sbb.cycle = true;
