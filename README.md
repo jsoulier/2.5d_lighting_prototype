@@ -20,7 +20,7 @@ See the shader implementation [here](shaders/light.frag)
 
 ```bash
 git clone https://github.com/jsoulier/2.5d_lighting --recurse-submodules
-cd 2.5d_lighting_prototype
+cd 2.5d_lighting
 mkdir build
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release
